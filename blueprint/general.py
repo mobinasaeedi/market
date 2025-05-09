@@ -6,7 +6,6 @@ app=Blueprint("general",__name__)
 def main():
     return"<p>This is main page</p>"
 
-
 @app.route("/about")
 def about():
     return"<p>about us</p>"
