@@ -6,4 +6,4 @@ app=Blueprint("user",__name__)
 
 @app.route("/user")
 def user():
-    retgit urn("<p>This is user page</p>")
+    return("<p>This is user page</p>")
