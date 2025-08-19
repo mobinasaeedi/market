@@ -1,7 +1,6 @@
-SQLALCHEMY_DATABASE_URI = "sqlite:///database.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///D:/py/market/instance/database.db"
 
 ADMIN_USERNAME="admin"
 ADMIN_PASSWORD="1234"
-
 
 SECRET_KEY="UGHEGKWHUGU7EHFUNVOIUHG2537864335"
