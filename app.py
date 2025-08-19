@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_wtf.csrf import CSRFProtect
 from blueprint.general import app as general
 from blueprint.user import app as user
 from blueprint.admin import app as admin
@@ -15,6 +16,11 @@ app.register_blueprint(admin)
 app.config["SQLALCHEMY_DATABASE_URI"]= connfig.SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SECRET_KEY']= connfig.SECRET_KEY
+
+csrf = CSRFProtect(app)
+
+
+
 
 
 # اتصال db به اپ
