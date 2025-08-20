@@ -19,10 +19,6 @@ app.config['SECRET_KEY']= connfig.SECRET_KEY
 
 csrf = CSRFProtect(app)
 
-
-
-
-
 # اتصال db به اپ
 db.init_app(app)
 
