@@ -12,7 +12,7 @@
     <textarea name="description"  placeholder=" توضیحات ">{{ product.description }}</textarea>
     <input type="number" name="price" value="{{ product.price }}" placeholder="قیمت محصول"><br>
     <label> فعال:</label>
-    <input value="1" type="checkbox" name="active" {{ "checked" if product.active == 1}} ><br>
+    <input value="1" type="checkbox" name="active" {{ " checked " if product.active == 1 }} ><br>
     <input type="submit">
 </form>
 {% endblock %}
