@@ -3,11 +3,10 @@ from flask_wtf.csrf import CSRFProtect
 from blueprint.general import app as general
 from blueprint.user import app as user
 from blueprint.admin import app as admin
-import connfig
 from extention import db
 from flask_login import LoginManager
 from models.user import User
-
+import connfig
 app=Flask(__name__)
 app.register_blueprint(general)
 app.register_blueprint(user)
