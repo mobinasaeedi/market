@@ -46,5 +46,10 @@ def login():
                  flash(' نام کاربری یا رمز عبور اشتباه هست')
                  return redirect(url_for('user.login'))
         
-        
-    
+        return 'done'
+
+
+
+@app.route("/user/dashboard",methods=['GET'])
+def dashboard():
+    return 'this is dashboard'
