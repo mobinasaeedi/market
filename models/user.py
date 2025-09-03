@@ -10,3 +10,4 @@ class User(db.Model ,UserMixin ):
     phone=Column(db.String,nullable=False,index=True)
     address=Column(db.String,nullable=False,index=True)
 
+   
