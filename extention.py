@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+import time
 # from sqlalchemy import create_engine, text
 
 # مسیر دیتابیس
@@ -16,3 +17,7 @@ from flask_sqlalchemy import SQLAlchemy
 #     print("❌ خطا در اتصال:", e)
 
 db=SQLAlchemy()
+
+
+def get_current_time():
+    return round(time.time())

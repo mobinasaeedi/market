@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,redirect,url_for,flash
 from flask_wtf.csrf import CSRFProtect 
 from blueprint.general import app as general
 from blueprint.user import app as user
@@ -26,7 +26,13 @@ db.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.query.filter(User.id == user_id).first()
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash('وارد حساب کاربریتان شوید ')
+    return redirect(url_for('user.login'))
+
 
 
 if __name__=="__main__":
