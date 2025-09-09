@@ -3,7 +3,7 @@
 <title>ورود/ثبت نام کاربران</title>
 {% endblock %}
 {% block body %}
-<h1> register</h1>
+<h1> ثبت نام</h1>
 <form action="#" method="post">
 <input type="hidden" name="csrf_token" value="{{ csrf_token()}}"/>
 <input type="hidden" name="register" value="1">
@@ -18,7 +18,7 @@
 
 
 
-<h1> login</h1>
+<h1> ورود</h1>
 <form action="#" method="post">
 <input type="hidden" name="csrf_token" value="{{ csrf_token()}}"/>
     <input type="text" name="username" placeholder="username"><br>

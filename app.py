@@ -30,7 +30,7 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    flash('وارد حساب کاربریتان شوید ')
+    flash(' ابتدا وارد حساب کاربریتان شوید')
     return redirect(url_for('user.login'))
 
 
