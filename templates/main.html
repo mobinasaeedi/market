@@ -23,9 +23,20 @@
   </section>
 </header>
 
-
+<section class="products">
 {% for p in products %}
-    <a href="{{ url_for ('general.product' , id=p.id, name=p.name ) }}" >{{ p.name }}</a> 
-{% endfor %}
-
+    <section class="product-box">
+      <img src="{{url_for('static',filename='covers/'+p.id|string+'.jpg')}}">
+      <h3>{{ p.name }}</h3>
+      <p>
+        {{ p.description|truncate(10)}}
+        <br>
+        <a href="{{ url_for ('general.product' , id=p.id, name=p.name ) }}" >توضیحات بیشتر</a>
+      </p>
+      <div>
+        <a href="{{ url_for('user.add_to_cart',id=p.id)}}" >افزودن به سبد خرید</a>
+      </div>
+    </section>
+{% endfor %} 
+</section>  
 {% endblock %}

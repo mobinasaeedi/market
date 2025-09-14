@@ -2,8 +2,8 @@ body {
     padding:0;
     margin:0;
     font-size:16px;
-    background: #dedddd;
-    color: rgb(54, 54, 54);
+    background: #fafafa;
+    color: #2a2a2a;
 }
 
 header {
@@ -16,15 +16,13 @@ header {
     margin:auto;
     margin-top:30px ;
     padding:10px 40px; /* 👈 فاصله از چپ و راست اضافه شد */
-    border-radius:72px;
-    background:#ffffff9a;
-    box-shadow: 9px 9px 10px #9d9d9d7a,
-                -9px -9px 10px #ffffff;
-
+    border:2px solid #2423237e;
+    border-radius:20px;
     display:flex;
     justify-content: space-between;
     align-items:center;
     text-align:center;
+    
 }
 
 .nav-left,
@@ -46,11 +44,12 @@ header {
 .logo img {
     max-width:140px;
     height:auto;
+    border-radius:10px;
 }
 
 header a {
     font-size:16px;
-    color: #5f3ca5;
+    color: #2b2b2b;
     text-decoration: none;
     font-weight:700;
     margin:0 10px;
@@ -61,4 +60,52 @@ header a {
 header a:hover {
     text-decoration:underline;
     
+}
+
+.product-box{
+    max-width:250px;
+    margin:10px;
+    border:1px solid #2423237e;
+    border-radius:10px;
+
+}
+
+.products{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:20px;
+
+}
+
+.product-box > img{
+    width:100%;
+    border-top-right-radius:inherit;
+    border-top-left-radius:inherit;
+
+}
+
+.product-box > h3{
+    margin:5px;
+    
+}
+
+.product-box > div > a{
+    text-decoration:none;
+    padding:5px;
+    font-size:14px;
+    margin:10px;
+    border:2px solid #6fe37c;
+    border-radius:9px;
+    background:#6ac8756c;
+    color:#0a0a0ad4;
+    float:left;
+    margin-left:10px;
+    margin-bottom:10px;
+    margin-right:5px;
+}
+
+.product-box > p{
+    font-size:12px;
+    margin:3px;
 }
