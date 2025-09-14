@@ -1,0 +1,64 @@
+body {
+    padding:0;
+    margin:0;
+    font-size:16px;
+    background: #dedddd;
+    color: rgb(54, 54, 54);
+}
+
+header {
+    width:100%;
+}
+
+.navbar {
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    margin-top:30px ;
+    padding:10px 40px; /* 👈 فاصله از چپ و راست اضافه شد */
+    border-radius:72px;
+    background:#ffffff9a;
+    box-shadow: 9px 9px 10px #9d9d9d7a,
+                -9px -9px 10px #ffffff;
+
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    text-align:center;
+}
+
+.nav-left,
+.nav-right {
+    display:flex;
+    gap:25px; /* فاصله بین لینک‌ها */
+}
+
+/* اگر خواستی فقط لینک‌ها فاصله بگیرن از گوشه‌ها */
+.nav-left {
+    margin-left:20px;  /* فاصله از گوشه چپ */
+}
+
+.nav-right {
+    margin-right:20px; /* فاصله از گوشه راست */
+}
+
+
+.logo img {
+    max-width:140px;
+    height:auto;
+}
+
+header a {
+    font-size:16px;
+    color: #5f3ca5;
+    text-decoration: none;
+    font-weight:700;
+    margin:0 10px;
+    padding:10px;
+
+}
+
+header a:hover {
+    text-decoration:underline;
+    
+}

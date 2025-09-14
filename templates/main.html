@@ -4,10 +4,28 @@
 {% endblock %}
 {% block body %}
 
-{% for p in products %}
+<header>
+  <section class="navbar">
+    <div class="nav-left">
+      <a href="#">صفحه اصلی</a>
+      <a href="#">درباره ما</a>
+      
+    </div>
 
-    <a href="{{ url_for ('general.product' , id=p.id, name=p.name ) }}" >{{ p.name }}</a>
-    
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="online shop">
+    </div>
+
+    <div class="nav-right">
+      <a href="#">محصولات جدید</a>
+      <a href="#">محصولات پرفروش</a>
+    </div>
+  </section>
+</header>
+
+
+{% for p in products %}
+    <a href="{{ url_for ('general.product' , id=p.id, name=p.name ) }}" >{{ p.name }}</a> 
 {% endfor %}
 
 {% endblock %}
