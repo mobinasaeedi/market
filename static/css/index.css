@@ -8,47 +8,55 @@ body {
     font-size:16px;
     background: #fafafa;
     color: #2a2a2a;
+    padding-top:60px;
 }
 
 header {
-    width:100%;
+    position: fixed;   
+    top: 0;         
+    left: 0;           
+    width: 100%;      
+    z-index: 1000; 
+    background: #2f8853ac;  /* بک‌گراند دلخواه، مثلا سفید */
+    border-bottom: 2px solid #1c4c2ebc; 
+    text-align:center;
 }
 
-.navbar {
+
+.header > section {
     width:100%;
-    max-width:800px;
+    max-width:750px;
     margin:auto;
-    margin-top:30px ;
-    padding:10px 40px; /* 👈 فاصله از چپ و راست اضافه شد */
-    border:2px solid #2423237e;
-    border-radius:20px;
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    text-align:center;
+    height:50px;
+    margin-top:10px ;
+    padding: 5px 60px; 
+
     
 }
 
-.nav-left,
-.nav-right {
+.header img {
+    max-width:190px; 
+    float:left;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left:-300px;
+    border-radius:20px;
+    background:#0a2b17ac;
+}
+
+.header > div {
     display:flex;
-    gap:25px; /* فاصله بین لینک‌ها */
+    justify-content:center;
+    align-items:center;
 }
 
-/* اگر خواستی فقط لینک‌ها فاصله بگیرن از گوشه‌ها */
-.nav-left {
-    margin-left:20px;  /* فاصله از گوشه چپ */
-}
-
-.nav-right {
-    margin-right:20px; /* فاصله از گوشه راست */
-}
-
-
-.logo img {
-    max-width:200px;
-    height:auto;
-    border-radius:10px;
+.header div input{
+    font-size:16px;
+    border:1px solid #4d4c4c;
+    border-radius:5px;
+    float:right;
+    margin:15px;
+    margin-right:-300px;
 }
 
 header a {
@@ -58,6 +66,7 @@ header a {
     font-weight:700;
     margin:0 10px;
     padding:10px;
+    float:right;
 
 }
 
@@ -67,22 +76,23 @@ header a:hover {
 }
 
 .product-box {
-    width: 250px;
-    margin: 15px;
+    width: 240px;
+    margin: 10px;
     border: 1px solid #2423237e;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;  /* بچه‌ها ستونی چیده بشن */
+    flex-direction: column; 
     overflow: hidden;
     position:relative;
+    margin-top:20px;
 }
 
 .products{
     display:flex;
     justify-content:center;
     align-items:stretch;
-    margin-top:20px;
-    max-width:847px;
+    margin-top:10px;
+    max-width:1500px;
     margin:auto;
     flex-wrap:wrap;
 
