@@ -1,14 +1,14 @@
-<section class="product-box">
-     <img src="{{url_for('static',filename='covers/'+p.id|string+'.jpg')}}">
+<div class="product-box">
+<a style="all:unset;" href="{{ url_for('general.product',id=p.id, name=p.name)}}">
+<section>
+    <img src="{{url_for('static',filename='covers/'+p.id|string+'.jpg')}}">
     <div class="tags">
         <span class="tag red">ارسال رایگان <img src="{{ url_for('static',filename='theme-image/delivary.png') }}"></span>
         <span class="tag blue">ضمانت کالا <img src="{{ url_for('static',filename='theme-image/done.png') }}"></span>
     </div>
-    <h3>{{ p.name }}</h3>
-    <p>
-        {{ p.description|truncate(10)}}
-        <br>
-        <a href="{{ url_for ('general.product' , id=p.id, name=p.name ) }}" >توضیحات بیشتر</a>
-    </p>
-    <a href="{{ url_for('user.add_to_cart',id=p.id)}}" >افزودن به سبد خرید<img src="{{ url_for('static',filename="theme-image/cart.png" )}}"></a>
+    <h3>{{ p.name }}</h3><br>
+    <p>{{ p.description|truncate(20)}}</p><br>                 
 </section>
+</a>
+<a class="add-to-cart-btn" href="/add-to-cart?id={{ p.id }}"><img src="{{url_for('static',filename='theme-image/cart.png')}}"></a>
+</div>
