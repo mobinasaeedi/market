@@ -1,199 +1,175 @@
-*{
-    transition:all 200ms ease-in;
-}
-
-body {
-    padding:0;
-    margin:0;
-    font-size:16px;
-    background: #fafafa;
-    color: #2a2a2a;
+*{ transition:all 200ms ease-in; } 
+body { 
+    padding:0; 
+    margin:0; 
+    font-size:16px; 
+    background: #fafafa; 
+    color: #2a2a2a; 
     padding-top:60px;
 }
 
-header {
-    position: fixed;   
-    top: 0;         
-    left: 0;           
-    width: 100%;      
+header { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
     z-index: 1000; 
-    background: #2f8853ac;  /* بک‌گراند دلخواه، مثلا سفید */
+    background: #48a16b; /* بک‌گراند دلخواه، مثلا سفید */ 
     border-bottom: 2px solid #1c4c2ebc; 
     text-align:center;
 }
 
-
 .header > section {
-    width:100%;
-    max-width:750px;
-    margin:auto;
-    height:50px;
-    margin-top:10px ;
+    width:100%; 
+    max-width:750px; 
+    margin:auto; 
+    height:50px; 
+    margin-top:10px ; 
     padding: 5px 60px; 
-
-    
 }
 
-.header img {
+.header img { 
     max-width:190px; 
-    float:left;
-    margin-top:5px;
-    margin-bottom:5px;
-    margin-left:-300px;
-    border-radius:20px;
+    float:left; 
+    margin-top:5px; 
+    margin-bottom:5px; 
+    margin-left:-300px; 
+    border-radius:20px; 
     background:#0a2b17ac;
-}
+} 
 
 .header > div {
-    display:flex;
-    justify-content:center;
+    display:flex; 
+    justify-content:center; 
     align-items:center;
-}
+} 
 
 .header div input{
-    font-size:16px;
-    border:1px solid #4d4c4c;
-    border-radius:5px;
-    float:right;
-    margin:15px;
+    font-size:16px; 
+    border:1px solid #4d4c4c; 
+    border-radius:5px; 
+    float:right; 
+    margin:15px; 
     margin-right:-300px;
-}
+} 
 
 header a {
-    font-size:17px;
-    color: #2b2b2b;
-    text-decoration: none;
-    font-weight:700;
-    margin:0 10px;
-    padding:10px;
+    font-size:17px; 
+    color: #2b2b2b; 
+    text-decoration: none; 
+    font-weight:700; 
+    margin:0 10px; 
+    padding:10px; 
     float:right;
-
-}
+} 
 
 header a:hover {
     text-decoration:underline;
-    
 }
 
+/* ------------------------------------- */
+/* محصولات */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 5px; /* فاصله دقیق بین باکس‌ها */
+    margin: 20px auto 50px auto;
+    max-width: 1500px;
+}
+
+/* باکس محصول */
 .product-box section {
-    max-width: 240px;
-    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
     border: 1px solid #2423237e;
     border-radius: 10px;
-    margin-top:20px;
-    display:flex;
-    flex-wrap:wrap;
-    height:100%;
-    
-
+    padding-bottom: 20px;
+    background: #fff;
 }
 
-.products{
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    margin-top:10px;
-    max-width:1500px;
-    margin:auto;
-    flex-wrap:wrap;
-    gap:2px;
-    height:100%;
-
+/* تصویر محصول */
+.product-box section > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 }
 
-.product-box section > img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    border-top-right-radius:inherit;
-    border-top-left-radius:inherit;
-    flex-shrink: 0;
+/* عنوان و متن محصول */
+.product-box section > h3,
+.product-box section > p {
+    margin: 7px 10px;
 }
 
-.product-box section > h3{
-    margin:7px 10px;
-    
+/* قیمت */
+.price {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    margin-left: 5px;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+}
+
+/* دکمه افزودن به سبد */
+.product-box {
+    position: relative; /* والد دکمه باید relative باشد */
 }
 
 .add-to-cart-btn {
-    margin-top: auto;       
-    align-self: flex-start;   
-    margin:0;
-    left:5px;
-    top:20px;
-    bottom:10px;             
+    position: absolute;
+    top: 1px;      /* فاصله از بالا */
+    left: 1px;    /* فاصله از سمت راست، میتونی left بذاری اگر سمت چپ میخوای */
+    z-index: 10;   /* روی عکس قرار گیرد */
     text-decoration: none;
-    padding: 5px;
+    padding: 5px 8px;
     font-size: 12px;
     border: 2px solid #6fe37c;
     border-radius: 9px;
-    background: #1b8226d5;
+    background: rgba(27, 130, 38, 0.8); /* کمی شفاف برای روی عکس */
     color: #fafafa;
     display: inline-flex;
     align-items: center;
     gap: 4px;
     font-weight: 300;
-    float:left;
-    position:absolute;
-    opacity:0;
-
-}
-
-
-.add-to-cart-btn:hover{
-    background:#c9755e09;
-
-}
-
-.product-box {
-    position: relative;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .product-box:hover .add-to-cart-btn {
-    opacity: 1;
+    opacity: 1; /* وقتی موس روی باکس رفت ظاهر شود */
 }
 
-
-.product-box section > p{
-    font-size:12px;
-    margin:7px 10px;
-    text-decoration: underline;
-    color: #444;
-    font-weight:300;
-}
-
-a> img{
-    width:20px;
-    margin-right:3px;
-}
-
-a{
-    display:flex;
-    align-items:center;
-
-}
-
+/* برچسب‌ها */
 .tags {
-    display: flex;      
-    gap: 8px;            
-    flex-wrap: wrap;     
-    margin-bottom: 5px;
-    margin:3px 7px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 3px 5px 5px 5px;
 }
 
 .tag {
-    display: flex;       
+    display: flex;
     align-items: center;
     gap: 5px;
     font-size: 14px;
     padding: 3px 6px;
-    border:1px solid #4d4c4c;
-    background:#7c7c7c97;
-    border-radius:20px;
-    margin-right:5px;
-    margin-top:3px;
-    font-weight:200;
-    font-weight:300;
+    border-radius: 20px;
+    font-weight: 300;
+}
+
+.tag.red {
+    border: 1px solid #ff000061;
+    background: #e05a5a56;
+}
+
+.tag.blue {
+    border: 1px solid #6468e5ee;
+    background: #7167db29;
 }
 
 .tag img {
@@ -202,12 +178,14 @@ a{
     object-fit: contain;
 }
 
-.tag.red{
-    border:1px solid #ff000061;
-    background:#e05a5a56;
+/* لینک‌ها و تصاویر داخل لینک */
+a > img {
+    width: 20px;
+    margin-right: 3px;
 }
 
-.tag.blue{
-    border:1px solid #6468e5ee;
-    background:#7167db29;
+a {
+    display: flex;
+    align-items:left;
 }
+
