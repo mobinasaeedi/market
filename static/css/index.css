@@ -3,7 +3,7 @@ body {
     padding:0; 
     margin:0; 
     font-size:16px; 
-    background: #fafafa; 
+    background: #ffffff; 
     color: #2a2a2a; 
     padding-top:60px;
 }
@@ -14,8 +14,8 @@ header {
     left: 0; 
     width: 100%; 
     z-index: 1000; 
-    background: #48a16b; /* بک‌گراند دلخواه، مثلا سفید */ 
-    border-bottom: 2px solid #1c4c2ebc; 
+    background: #525252; /* بک‌گراند دلخواه، مثلا سفید */ 
+    border-bottom: 2px solid #707271bc; 
     text-align:center;
 }
 
@@ -71,10 +71,10 @@ header a:hover {
 /* محصولات */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 5px; /* فاصله دقیق بین باکس‌ها */
-    margin: 20px auto 50px auto;
-    max-width: 1500px;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 3px; /* فاصله دقیق بین باکس‌ها */
+    margin: 20px auto 80px auto;
+    max-width: 1700px;
 }
 
 /* باکس محصول */
@@ -85,14 +85,14 @@ header a:hover {
     position: relative;
     border: 1px solid #2423237e;
     border-radius: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     background: #fff;
 }
 
 /* تصویر محصول */
 .product-box section > img {
     width: 100%;
-    height: 200px;
+    height: 170px;
     object-fit: cover;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -106,13 +106,16 @@ header a:hover {
 
 /* قیمت */
 .price {
+    display:fixed;
     font-size: 16px;
     font-weight: 500;
-    text-align: left;
-    margin-left: 5px;
+    margin-bottom:-10px;
     position: absolute;
-    bottom: 8px;
-    left: 8px;
+    bottom: 10px;   /* فاصله از پایین */
+    left: 10px;     /* فاصله از چپ */
+    font-size: 16px;
+    font-weight: 600;
+
 }
 
 /* دکمه افزودن به سبد */
@@ -130,18 +133,33 @@ header a:hover {
     font-size: 12px;
     border: 2px solid #6fe37c;
     border-radius: 9px;
-    background: rgba(27, 130, 38, 0.8); /* کمی شفاف برای روی عکس */
+    background:  rgba(15, 203, 34, 0.8); /* کمی شفاف برای روی عکس */
     color: #fafafa;
     display: inline-flex;
     align-items: center;
     gap: 4px;
     font-weight: 300;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    opacity:0;
 }
 
 .product-box:hover .add-to-cart-btn {
-    opacity: 1; /* وقتی موس روی باکس رفت ظاهر شود */
+    opacity: 1;
+}
+
+.add-to-cart-btn2 {
+    width:100px;
+    display:flex;
+    justify-content:center;
+    text-decoration: none;
+    padding: 5px 50px;
+    margin:5px;
+    font-size: 16px;
+    border: 2px solid #6fe37c;
+    border-radius: 9px;
+    background: rgba(27, 130, 38, 0.8); /* کمی شفاف برای روی عکس */
+    color: #fafafa;
+    font-weight: 400;
+
 }
 
 /* برچسب‌ها */
@@ -153,23 +171,24 @@ header a:hover {
 }
 
 .tag {
-    display: flex;
+    display: inline-block;
     align-items: center;
     gap: 5px;
-    font-size: 14px;
+    font-size: 20px;
     padding: 3px 6px;
     border-radius: 20px;
-    font-weight: 300;
-}
-
-.tag.red {
-    border: 1px solid #ff000061;
-    background: #e05a5a56;
+    font-weight: 500;
+    margin-top:5px;
 }
 
 .tag.blue {
     border: 1px solid #6468e5ee;
     background: #7167db29;
+}
+
+.tag.pink {
+    border: 1px solid #e74bcfee;
+    background: #f43dcf29;
 }
 
 .tag img {
@@ -185,7 +204,76 @@ a > img {
 }
 
 a {
-    display: flex;
+    display: inline-flex;
     align-items:left;
 }
 
+.product-detail-box{
+    margin-top:50px;
+    max-width:800px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:right;
+    align-items:start;
+    margin:auto;
+}
+
+.product-detail-box > div > img {
+    width: 350px;           /* اندازه ثابت پهنا */
+    height: 350px;          /* اندازه ثابت ارتفاع */
+    object-fit: cover;      /* عکس رو طوری برش می‌ده که بدون کشیدگی فضا رو پر کنه */
+    border-radius: 5px;
+    margin: 20px;
+    margin-right: -50px;
+    display: block;         /* جلوگیری از فاصله اضافی پایین عکس */
+}
+
+.product-detail-box > section{
+    max-width:500px;
+}
+
+.product-detail-box h6{
+    font-size:13px;
+    margin:0;
+}
+
+.product-detail-box h1{
+    margin:5px;
+    margin-top:20px;
+}
+
+.product-detail-box .price {
+    display:flex;
+    justify-content:center;
+    background:#7d7d7d59;
+    border-radius:5px;
+    position: static;   /* یا کلاً این خط رو حذف کن */
+    margin-top: 10px;   /* بیاد بالا */
+    font-weight: 500px;
+    font-size: 20px;
+    margin-bottom:5px;
+    
+}
+
+.product-description-box{
+    max-width:1000px;
+    margin:auto;
+}
+
+.product-description-box p {
+    text-align:justify;
+}
+
+.products-in-page {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* دقیقاً ۴ ستون */
+    justify-content: center; /* وسط‌چین افقی کل شبکه */
+    gap: 15px; /* فاصله بین باکس‌ها */
+    margin: 40px auto 80px auto; /* بالا و پایین فاصله، وسط صفحه */
+    max-width: 1000px; /* برای اینکه ۴ تا باکس قشنگ وسط باشن */
+}
+
+.similar-products-box{
+    max-width:1000px;
+    margin:auto;
+}
