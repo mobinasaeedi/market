@@ -203,22 +203,24 @@ a {
 }
 
 .product-detail-box{
-    margin-top:50px;
+    margin: 20px auto 0 auto; /* فاصله بالا ۸۰px، وسط‌چین افقی */
     max-width:800px;
     display:flex;
     flex-wrap:wrap;
     justify-content:right;
     align-items:start;
-    margin:auto;
+    border-radius:10px;
+    border:2px solid #4d4c4c;
+    background:#aeaeae22;
 }
 
 .product-detail-box > div > img {
-    width: 350px;           /* اندازه ثابت پهنا */
+    width: 400px;           /* اندازه ثابت پهنا */
     height: 350px;          /* اندازه ثابت ارتفاع */
     object-fit: cover;      /* عکس رو طوری برش می‌ده که بدون کشیدگی فضا رو پر کنه */
     border-radius: 5px;
-    margin: 20px;
-    margin-right: -50px;
+    margin: 8px;
+    margin-right:3px;
     display: block;         /* جلوگیری از فاصله اضافی پایین عکس */
 }
 
