@@ -49,7 +49,7 @@ header {
     
 }
 
-header a {
+header .header-link{
     font-size: 16px; 
     color: #2b2b2b; 
     text-decoration: none; 
@@ -100,7 +100,7 @@ header a:hover {
 
 /* قیمت */
 .price {
-    display:fixed;
+    position:fixed;
     font-size: 16px;
     font-weight: 500;
     margin-bottom:-10px;
@@ -110,6 +110,26 @@ header a:hover {
     font-size: 16px;
     font-weight: 600;
 
+}
+
+/* ------------------------------------- */
+/* استایل قیمت مخصوص صفحه سبد خرید */
+.simple-box .price {
+    position: static;          /* به جای absolute */
+    display: inline-block;
+    margin: 0 10px 0 0;        /* فاصله بین قیمت و دکمه پرداخت */
+    font-size: 18px;
+    font-weight: 600;
+    color: #2a2a2a;
+}
+
+/* چینش قیمت و دکمه پرداخت در انتهای صفحه سبد خرید */
+.simple-box > div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
 }
 
 /* دکمه افزودن به سبد */
@@ -192,14 +212,14 @@ header a:hover {
 }
 
 /* لینک‌ها و تصاویر داخل لینک */
-a > img {
+a.icon > img {
     width: 20px;
     margin-right: 3px;
 }
 
-a {
-    display: inline-flex;
-    align-items:left;
+a.icon{
+    display:inline-flex;
+    align-items:center;
 }
 
 .product-detail-box{
@@ -251,6 +271,11 @@ a {
     
 }
 
+.product-detail-box .price-box{
+    margin:20px;
+    text-align:center;
+}
+
 .product-description-box{
     max-width:1000px;
     margin:auto;
@@ -274,6 +299,59 @@ a {
     margin:auto;
 }
 
+.simple-box{
+    background:#ffffff;
+    border:2px solid #2b2b2b;
+    max-width:800px;
+    border-radius:25px;
+    margin:auto;
+    margin-top:40px;
+    padding:10px;
+    overflow:auto;
+}
+
+.simple-box h1{
+    margin:0 10px;
+}
+
+table.cart{
+    margin:auto;
+}
+
+table.cart td{
+    padding:5px;
+    border-bottom:2px solid rgba(0, 0, 0, 0.237);
+}
+
+.cart .pay-btn{
+    text-decoration:none;
+    color:black;
+    font-size:20px;
+    float:left;
+    border-radius:5px;
+    background:#60f871;
+    padding:8px;
+    font-weight:700;
+}
+
+.cartitem-btn{
+    width:25px;
+    border-radius:50%;
+    padding:2px;
+    text-align:center;
+    height:25px;
+    display:inline-block;
+    margin:5px;
+    color:black;
+    text-decoration:none;
+}
+.cartitem-increase{
+    background:rgba(0, 128, 0, 0.344);
+}
+
+.cartitem-decrease{
+    background:rgba(255, 0, 0, 0.322);
+}
 @media (max-width: 700px) {
     header > section > div {
         display:block;
