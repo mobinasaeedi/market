@@ -2,11 +2,18 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/eggy.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/progressbar.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/theme.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static' , filename='css/index.css')}}">
-    {% block header %}{% endblock %}
+
+    {% block header %}
+    {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+
+{% block body %}
+{% endblock %}
 
 <script>
     const prices = document.getElementsByClassName('price');
@@ -14,6 +21,18 @@
         let price = prices[i];
         price.innerText = parseInt(price.innerText).toLocaleString() + ' تومان ';
     }
+</script>
+
+<script type="module">
+    import { Eggy } from '{{ url_for('static' , filename='js/eggy.js')}}';
+    {% for m in get_flashed_messages() %}
+        Eggy({
+          title: 'پیام سیستم',
+          message: '{{ m }}',
+          type:'info',
+          duration:5000
+        });
+    {% endfor %}
 </script>
 </body>
 </html>

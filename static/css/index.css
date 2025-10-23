@@ -310,6 +310,11 @@ a.icon{
     overflow:auto;
 }
 
+p{
+    text-align: justify;
+    padding:5px 10px; 
+}
+
 .simple-box h1{
     margin:0 10px;
 }
@@ -325,13 +330,18 @@ table.cart td{
 
 .cart .pay-btn{
     text-decoration:none;
-    color:black;
+    color:#60f871;
     font-size:20px;
     float:left;
     border-radius:5px;
-    background:#60f871;
+    border:2px solid #60f871;
     padding:8px;
     font-weight:700;
+}
+
+.cart .pay-btn:hover{
+    background:#11f82c;
+    color:#ffffff;
 }
 
 .cartitem-btn{
