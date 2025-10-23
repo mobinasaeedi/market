@@ -14,8 +14,8 @@ header {
     left: 0; 
     width: 100%; 
     z-index: 1000; 
-    background: #858585; 
-    border-bottom: 2px solid #0e0e0ebc; 
+    background: #7e7afc9d; 
+    border-bottom: 2px solid #1500f9ff; 
 }
 
 .header > section {
@@ -300,8 +300,8 @@ a.icon{
 }
 
 .simple-box{
-    background:#ffffff;
-    border:2px solid #2b2b2b;
+    background:#9fe5fa7f;
+    border:2px solid #0032fbcd;
     max-width:800px;
     border-radius:25px;
     margin:auto;
@@ -352,6 +352,47 @@ table.cart td{
 .cartitem-decrease{
     background:rgba(255, 0, 0, 0.322);
 }
+
+#login-box{
+    display:block;
+    text-align:center;
+
+}
+
+#register-box{
+    display:none;
+    text-align:center;
+}
+
+.simple-box input , .simple-box textarea{
+    color:black;
+    font-size:16px;
+    display:block;
+    margin:5px auto;
+    border-radius:10px;
+    border:1px solid black;
+    padding:2px 10px;
+}
+
+.simple-box input[type='submit']{
+    all:unset;
+    border-radius:10px;
+    width:100%;
+    max-width:204px;
+    cursor:pointer;
+    margin:auto;
+    display:block;
+    text-align:center;
+    background:transparent;
+    border:2px solid #00b6ff;
+    padding:5px;
+    color:black;
+}
+
+.simple-box input[type='submit']:hover {
+    background: #008ed6;
+}
+
 @media (max-width: 700px) {
     header > section > div {
         display:block;
