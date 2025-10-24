@@ -14,7 +14,7 @@ header {
     left: 0; 
     width: 100%; 
     z-index: 1000; 
-    background: #7e7afc9d; 
+    background: #7e7afc; 
     border-bottom: 2px solid #1500f9ff; 
 }
 
@@ -401,6 +401,11 @@ table.cart td{
 
 .simple-box input[type='submit']:hover {
     background: #008ed6;
+}
+
+.flash{
+    position:'bottom-right';
+    margin-top:50px;
 }
 
 @media (max-width: 700px) {

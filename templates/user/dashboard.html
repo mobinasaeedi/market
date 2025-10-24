@@ -3,9 +3,27 @@
 <title>پنل کاربری</title>
 {% endblock %}
 {% block body %}
-      
+{% include 'part/header.html'%}
+
+<section class="simple-box cart">
+    <h1>سفارشات</h1>
+    <table class="cart">
+    <tr>
+        <th>شماره سفارش:</th>
+        <th>وضعیت:</th>
+        <th>مشاهده</th>
+        
+    </tr>    
     {% for cart in current_user.carts|selectattr('status','!=','pending') %}
-       <a href="{{ url_for('user.order',id= cart.id)}}">{{ cart.id }} - {{ cart.get_status_persion() }}</a><br>
+        <tr>
+            <td>{{ cart.id }}</td>
+            <td>{{ cart.get_status_persion() }}</td>
+            <td><a href="{{ url_for('user.order',id=cart.id)}}">جزئیات</a></td>
+       </tr>
     {% endfor %}
+   </table>
+   </section>
+
+
 
 {% endblock %}

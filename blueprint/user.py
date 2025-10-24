@@ -16,46 +16,57 @@ app=Blueprint("user",__name__)
 
 ##login page for user
 
-@app.route("/user/login",methods=['GET','POST'])
+@app.route("/user/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template("user/login.html")
-    else:
-        register= request.form.get('register', None)
-        username= request.form.get('username', None)
-        password= request.form.get('password', None)
-        phone= request.form.get('phone', None)
-        address= request.form.get('address', None)
 
-        if register != None:
-            user = User.query.filter(User.username == username).first()
-            if user != None:
-                flash('نام کاربری دیگری انتخاب کنید')
-                return redirect(url_for('user.login'))
-            
-            user = User(username = username,password = sha256_crypt.encrypt(password),phone = phone, address = address)
-            db.session.add(user)
-            db.session.commit()
-            login_user(user)
-            
-            return redirect('/user/dashboard')
-        
-        else:
-            user = User.query.filter(User.username == username).first()
-            if user == None:
-                flash(' نام کاربری یا رمز عبور اشتباه هست')
-                return redirect(url_for('user.login'))
-            
-            
-            if sha256_crypt.verify(password, user.password):
-                login_user(user)
-                return redirect('/user/dashboard')
-            
-            else:
-                 flash(' نام کاربری یا رمز عبور اشتباه هست')
-                 return redirect(url_for('user.login'))
-        
-        return 'done'
+    # دریافت داده‌ها از فرم
+    register = request.form.get('register', None)
+    username = request.form.get('username', '').strip()
+    password = request.form.get('password', '').strip()
+    phone = request.form.get('phone', '').strip()
+    address = request.form.get('address', '').strip()
+
+    # اگر دکمه ثبت‌نام زده شده بود
+    if register is not None:
+        if not username or not password:
+            flash('نام کاربری و رمز عبور الزامی است')
+            return redirect(url_for('user.login'))
+
+        user = User.query.filter_by(username=username).first()
+        if user:
+            flash('نام کاربری دیگری انتخاب کنید')
+            return redirect(url_for('user.login'))
+
+        user = User(
+            username=username,
+            password=sha256_crypt.encrypt(password),
+            phone=phone,
+            address=address
+        )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return redirect('/user/dashboard')
+
+    # بخش ورود
+    else:
+        if not username or not password:
+            flash('نام کاربری و رمز عبور را وارد کنید')
+            return redirect(url_for('user.login'))
+
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash('نام کاربری یا رمز عبور اشتباه است')
+            return redirect(url_for('user.login'))
+
+        if not sha256_crypt.verify(password, user.password):
+            flash('نام کاربری یا رمز عبور اشتباه است')
+            return redirect(url_for('user.login'))
+
+        login_user(user)
+        return redirect('/user/dashboard')
 
 
    ##add

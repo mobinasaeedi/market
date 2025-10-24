@@ -3,12 +3,31 @@
 <title>سفارش شماره{{ cart.id }}</title>
 {% endblock %}
 {% block body %}
-      
-    
-    {{ cart.get_status_persion() }}<br>
+{% include 'part/header.html'%}
+
+<section class="simple-box cart">
+    <h1>سفارش شماره {{cart.id}} - {{ cart.get_status_persion() }}</h1>
+    <table class="cart">
+    <tr>
+        <th>شماره محصول</th>
+        <th>نام محصول</th>
+        <th>قیمت</th>
+        <th>تعداد</th>
+        
+    </tr>    
     {% for item in cart.cart_items %}
-      {{ item.product.name}} - {{ item.price }}<br>
+        <tr>
+            <td>{{ item.product.id }}</td>
+            <td>{{ item.product.name }}</td>
+            <td class="price">{{ item.product.price }}</td>
+            <td>{{ item.quantity }}</td>
+       </tr>
     {% endfor %}
+    <tr>
+      <td colspan="5" style="text-align:left;" class="price">{{cart.total_price()}}</td>
+    </tr>
+   </table>
+   </section>
       
 {% endblock %}     
  
