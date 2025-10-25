@@ -81,6 +81,7 @@ header a:hover {
     border-radius: 10px;
     padding-bottom: 40px;
     background: #fff;
+    overflow:auto;
 }
 
 /* تصویر محصول */
@@ -406,6 +407,13 @@ table.cart td{
 .flash{
     position:'bottom-right';
     margin-top:50px;
+}
+
+.banner{
+    margin: 10px auto;
+    display:block;
+    max-width:800px;
+    border-radius:35px;
 }
 
 @media (max-width: 700px) {
