@@ -161,6 +161,9 @@ header a:hover {
     opacity: 1;
 }
 
+.product-box section:hover{
+    box-shadow:5px 5px 10px 5px #00000020;
+}
 .add-to-cart-btn2 {
     width:100px;
     display:flex;
