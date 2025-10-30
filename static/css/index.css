@@ -379,7 +379,7 @@ table.cart td{
     text-align:center;
 }
 
-.simple-box input , .simple-box textarea{
+.simple-box input , .simple-box textarea , .simple-box select{
     color:black;
     font-size:16px;
     display:block;
