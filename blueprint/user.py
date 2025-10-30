@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template ,request , redirect,url_for,flash
 from passlib.hash import sha256_crypt
 from models.user import User
-from flask_login import login_user,login_required,current_user
+from flask_login import login_user,login_required,current_user,logout_user
 from extention import db
 from models.cart import Cart
 from models.cart_item import CartItem
@@ -16,7 +16,7 @@ app=Blueprint("user",__name__)
 
 ##login page for user
 
-@app.route("/user/login", methods=['GET', 'POST'])
+@app.route("/user/login", methods=['GET','POST'])
 def login():
     if request.method == 'GET':
         if current_user.is_authenticated :
@@ -180,7 +180,7 @@ def verify():
         pay.refid = refid
         pay.status = 'success'
         pay.cart.status = 'paid'
-        flash("پردات موفقیت امیز بود")
+        flash("پرداخت موفقیت امیز بود")
     else:
         flash("پرداخت با خطا مواجه شد")
         pay.status = 'failed'
@@ -192,15 +192,48 @@ def verify():
 
     ##dashboard
 
-@app.route("/user/dashboard",methods=['GET'])
+@app.route("/user/dashboard", methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('user/dashboard.html')
+    if request.method == "GET":
+        return render_template('user/dashboard.html')
 
-## order of user
+    username = request.form.get('username', '').strip()
+    password = request.form.get('password', '').strip()
+    phone = request.form.get('phone', '').strip()
+    address = request.form.get('address', '').strip()
+
+    if current_user.username != username:
+        user = User.query.filter_by(username=username).first()
+        if user:
+            flash('نام کاربری از قبل انتخاب شده است')
+            return redirect(url_for('user.dashboard'))
+        else:
+            current_user.username = username
+
+    # فقط در صورتی رمز را تغییر بده که کاربر واقعاً چیزی وارد کرده
+    if password.strip() != "":
+        current_user.password = sha256_crypt.encrypt(password)
+
+    current_user.address = address
+    current_user.phone = phone
+
+    db.session.commit()
+    flash('تغییرات با موفقیت ثبت شد')
+    return redirect('/user/dashboard')
+
+
+## orders of user
 
 @app.route("/user/dashboard/order/<id>",methods=['GET'])
 @login_required
 def order(id):
     cart = current_user.carts.filter(Cart.id == id ).first_or_404()
     return render_template('user/order.html',cart=cart)
+
+@app.route("/user/logout",methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    flash('با موفقیت خارج شدید')
+    return redirect('/')

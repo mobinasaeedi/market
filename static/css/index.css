@@ -164,6 +164,7 @@ header a:hover {
 .product-box section:hover{
     box-shadow:5px 5px 10px 5px #00000020;
 }
+
 .add-to-cart-btn2 {
     width:100px;
     display:flex;
@@ -417,6 +418,21 @@ table.cart td{
     display:block;
     max-width:800px;
     border-radius:35px;
+}
+
+.red-btn{
+    text-decoration:none;
+    color:#fd2323;
+    font-size:20px;
+    border-radius:15px;
+    border:2px solid #f91b1b;
+    padding:5px;
+    font-weight:700;
+}
+
+.red-btn:hover{
+    background:#f81111;
+    color:#ffffff;
 }
 
 @media (max-width: 700px) {
