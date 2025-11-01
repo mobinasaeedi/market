@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block header %}
-<title>admin products</title>
+<title>ویرایش محصول{{product.id}}</title>
 {% endblock %}
 {% block body %}
-
-<img style="width: 100px" src="/static/covers/{{ product. id}}.jpg">
+<section class="simple-box big">
+<img style="width:300px;margin:auto;display:block;border-radius:10px;" src="/static/covers/{{ product. id}}.jpg">
 <form action="{{ url_for('admin.edit_product',id=product.id) }}" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token()}}"/>
-    <label> cover:</label><input type="file" name="cover"><br>
-    <input type="text" name="name" value="{{ product.name }}" placeholder="نام محصول"><br>
+    <input type="file" name="cover">
+    <input type="text" name="name" value="{{ product.name }}" placeholder="نام محصول">
     <textarea name="description"  placeholder=" توضیحات ">{{ product.description }}</textarea>
-    <input type="number" name="price" value="{{ product.price }}" placeholder="قیمت محصول"><br>
-    <label> فعال:</label>
-    <input value="1" type="checkbox" name="active" {{ " checked " if product.active == 1 }} ><br>
-    <input type="submit">
+    <input type="number" name="price" value="{{ product.price }}" placeholder="قیمت محصول">
+    <div style="display:flex;justify-content:center;">
+    <label for="active"> فعال:</label>
+    <input style="margin:0;width:auto;" value="1" type="checkbox" id="active" name="active" {{ " checked " if product.active == 1 }} ></div>
+    <input type="submit" value="ثبت تغییرات">
 </form>
+</section>
 {% endblock %}
