@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block header %}
-<title>admin products</title>
+<title>صفحه محصولات</title>
 {% endblock %}
 {% block body %}
-{% include 'part/header.html' %}
+<section class="simple-box">
+<h1>محصولات</h1>
 <table>
     <tr>
         <th>تصویر</th>
@@ -15,9 +16,9 @@
     </tr>
     {% for p in products %}
         <tr>
-        <td><img style="width: 20px" src="/static/covers/{{ p. id}}.jpg"></td>    
+        <td><img style="width: 70px" src="/static/covers/{{ p. id}}.jpg"></td>    
         <td>{{ p.name }}</td>
-        <td>{{ p.description }}</td>
+        <td>{{ p.description|truncate(150) }}</td>
         <td>{{ p.price }}</td>
         <td>{{ "yes" if p.active ==1 else "no" }}</td>
         <td><a href="/admin/dashboard/edit-product/{{p.id}}">ویرایش</a></td>
@@ -25,19 +26,20 @@
     {% endfor %}
 
 </table>
+</section>
 
-
-
-
-
+<section class="simple-box">
+<h1>اضافه کردن محصول</h1>
 <form action="/admin/dashboard/products" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token()}}"/>
-    <label>cover:</label><input type="file" name="cover" ><br>
-    <input type="text" name="name" placeholder="نام محصول"><br>
+    <input type="file" name="cover" >
+    <input type="text" name="name" placeholder="نام محصول">
     <textarea name="description" placeholder=" توضیحات "></textarea>
-    <input type="number" name="price" placeholder="قیمت محصول"><br>
-    <label> فعال:</label>
-    <input value="1" type="checkbox" name="active"><br>
-    <input type="submit">
+    <input type="number" name="price" placeholder="قیمت محصول">
+    <div style="display:flex;justify-content:center;">
+    <label for="active"> فعال:</label>
+    <input style="margin:0;" value="1" type="checkbox" id="active" name="active"></div>
+    <input type="submit" value="افزودن">
 </form>
+</section>
 {% endblock %}
