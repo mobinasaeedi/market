@@ -5,8 +5,8 @@
     <div class="tags">
         <span class="tag blue">ضمانت کالا <img src="{{ url_for('static',filename='theme-image/done.png') }}"></span>
     </div>
-    <h3>{{p.name}}</h3>
-    <p>{{ p.description}}</p>
+    <h3>{{p.name|truncate(40)}}</h3>
+    <p>{{ p.description|truncate(20)}}</p>
     <span class="price">{{ p.price }}</span>                 
 </section>
 </a>

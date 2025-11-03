@@ -5,10 +5,71 @@
 {% block body %}
 
 {% include 'part/header.html' %}
-<img  class="banner" src="{{ url_for('static',filename='images/baner.png')}}">
+<div id="slideshow-container">
+  <div id="slideshow">
+    <img class="banner active" src="{{ url_for('static', filename='images/baner.png') }}">
+    <img class="banner" src="{{ url_for('static', filename='images/baner2.png') }}">
+    <img class="banner" src="{{ url_for('static', filename='images/baner3.png') }}">
+  </div>
+</div>
+
+<style>
+  /* قاب کلی که بنر رو وسط نگه می‌داره */
+  #slideshow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px; /* فاصله از پایین */
+    width: 100%;
+  }
+
+  /* خود اسلایدشو */
+  #slideshow {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  /* بنرها */
+  .banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* عکس هم‌سایز بدون کشیدگی */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  /* بنر فعال */
+  .banner.active {
+    opacity: 1;
+    z-index: 1;
+  }
+</style>
+
+<script>
+  const slides = document.querySelectorAll('.banner');
+  let currentSlide = 0;
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 4000);
+</script>
+
+
+
 <section class="products">
 {% for p in products %}
        {% include 'part/product.html' %}
 {% endfor %} 
-</section>  
+</section>
 {% endblock %}
