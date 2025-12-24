@@ -220,8 +220,7 @@ def dashboard():
 
     db.session.commit()
     flash('تغییرات با موفقیت ثبت شد')
-    return redirect('/user/dashboard')
-
+    return redirect('/user/dashboard') 
 
 ## orders of user
 

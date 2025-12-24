@@ -1,49 +1,55 @@
 {% extends 'base.html' %}
+
 {% block header %}
-<title>ورود/ثبت نام </title>
+<title>ورود/ثبت نام</title>
 {% endblock %}
+
 {% block body %}
 
-{% include 'part/header.html'%}
+<div id="user-auth-page">
+    <div class="auth-box" id="login-box">
+        <h1>ورود</h1>
+        <form action="#" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="text" name="username" placeholder="نام کاربری" required>
+            <input type="password" name="password" placeholder="رمز عبور" required>
+            <button type="submit">ورود</button>
+        </form>
+        <span style="cursor:pointer; text-align:center; display:block; margin-top:10px;" onclick="show_register()">ثبت نام نکرده اید؟</span>
+    </div>
 
-<section class="simple-box" style="max-width:290px; padding:80px;">
-<div id="login-box">
-<h1>ورود</h1>
-<form action="#" method="post">
-<input type="hidden" name="csrf_token" value="{{ csrf_token()}}">
-    <input type="text" name="username" placeholder="نام کاربری">
-    <input type="password" name="password" placeholder="رمز عبور">
-    <input type="submit" value="ورود">
-</form>
-<span style="cursor:pointer;" onclick="javascript:show_register()">ثبت نام نکرده اید؟</span>
+    <div class="auth-box" id="register-box" style="display:none;">
+        <h1>ثبت نام</h1>
+        <form action="#" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="register" value="1">
+            <input type="text" name="username" placeholder="نام کاربری" required>
+            <input type="password" name="password" placeholder="رمز عبور" required>
+            <input type="number" name="phone" placeholder="شماره موبایل" required>
+            <textarea name="address" placeholder="آدرس" required></textarea>
+            <button type="submit">ثبت نام</button>
+        </form>
+        <span style="cursor:pointer; text-align:center; display:block; margin-top:10px;" onclick="show_login()">قبلا ثبت نام کرده اید؟</span>
+    </div>
 </div>
 
-<div id="register-box">
-<h1>ثبت نام</h1>
-<form action="#" method="post">
-<input type="hidden" name="csrf_token" value="{{ csrf_token()}}"/>
-<input type="hidden" name="register" value="1">
-    <input type="text" name="username" placeholder="نام کاربری">
-    <input type="password" name="password" placeholder="رمز عبور">
-    <input type="number" name="phone" placeholder="شماره موبایل">
-    <textarea type="text" name="address" placeholder="ادرس"></textarea>
-    <input type="submit" value="ثبت نام">
-</form>
-<span style="cursor:pointer;" onclick="javascript:show_login()">قبلا ثبت نام کرده اید؟</span>
-</div>
-</section>
-
- 
 <script>
-    const register_box=document.getElementById('register-box')
-    const login_box=document.getElementById('login-box')
-    const show_register=()=>{
-        register_box.style.display='block'
-        login_box.style.display='none'
-    }    
-    const show_login=()=>{
-        login_box.style.display='block'
-        register_box.style.display='none'
-    }
+    const register_box = document.getElementById('register-box');
+    const login_box = document.getElementById('login-box');
+
+    const show_register = () => {
+        register_box.style.display = 'block';
+        login_box.style.display = 'none';
+    };
+
+    const show_login = () => {
+        login_box.style.display = 'block';
+        register_box.style.display = 'none';
+    };
 </script>
+
+{% endblock %}
+
+{% block footer %}
+<!-- خالی گذاشتیم تا فوتر نمایش داده نشود -->
 {% endblock %}

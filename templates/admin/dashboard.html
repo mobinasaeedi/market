@@ -4,23 +4,60 @@
 {% endblock %}
 {% block body %}
 
-<section class="simple-box cart" style="max-width:376px;position:relative;">
-    <h1>سفارشات</h1>
-    <a href="/admin/dashboard/products"style="position:absolute; top:0; left:0; margin:10px; text-decoration:none; color:#2c7ae0;">صفحه محصولات</a>
-    <table class="cart">
-    <tr>
-        <th>شماره سفارش:</th>
-        <th>وضعیت:</th>
-        <th>مشاهده</th>
-        
-    </tr>    
-    {% for cart in carts %}
-        <tr>
-            <td>{{ cart.id }}</td>
-            <td>{{ cart.get_status_persion() }}</td>
-            <td><a href="{{ url_for('admin.order',id=cart.id)}}">جزئیات</a></td>
-       </tr>
-    {% endfor %}
-   </table>
-   </section>
+<div id="admin-panel">
+    <div class="panel-container">
+        <h1>پنل مدیریت</h1>
+
+        <!-- کارت سفارشات -->
+        <div class="admin-card">
+            <h2>سفارشات</h2>
+            <a href="/admin/dashboard/products" class="add-to-cart-btn2" style="display:inline-flex; margin-bottom:10px;">
+                صفحه محصولات
+            </a>
+            <table class="admin-table">
+                <tr>
+                    <th>شماره سفارش</th>
+                    <th>وضعیت</th>
+                    <th>مشاهده</th>
+                </tr>    
+                {% for cart in carts %}
+                <tr>
+                    <td>{{ cart.id }}</td>
+                    <td>{{ cart.get_status_persion() }}</td>
+                    <td><a href="{{ url_for('admin.order',id=cart.id)}}" class="red-btn">جزئیات</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- می‌تونی کارت‌های دیگه مثل محصولات یا کاربران اضافه کنی -->
+        <!-- نمونه کارت محصولات -->
+        <!--
+        <div class="admin-card">
+            <h2>محصولات</h2>
+            <table class="admin-table">
+                <tr>
+                    <th>کد محصول</th>
+                    <th>نام</th>
+                    <th>قیمت</th>
+                    <th>موجودی</th>
+                </tr>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        -->
+
+    </div>
+</div>
+
+{% endblock %}
+{% block footer %}
+<!-- خالی گذاشتیم تا فوتر نمایش داده نشود -->
 {% endblock %}
